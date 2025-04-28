@@ -1,0 +1,35 @@
+segue o codigo de uma atividade feita em sala de aula
+
+
+
+CREATE DATABASE produtos;
+USE produtos;
+
+CREATE TABLE produtos (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    preco DECIMAL(10,2),
+    categoria VARCHAR(50)
+); 	
+INSERT INTO produtos (id, nome, preco, categoria) VALUES
+(1, 'Televisão LED 32', 899.90, 'Eletrônicos'),
+(2, 'Tablet 10 Polegadas', 1150.00, 'Eletrônicos'),
+(3, 'Mouse Óptico', 39.99, 'Informática'),
+(4, 'Teclado USB', 79.50, 'Informática'),
+(5, 'Telefone Sem Fio', 120.00, 'Eletrônicos'),
+(6, 'Toca Discos Vinil', 250.00, 'Eletrônicos'),
+(7, 'Câmera Digital', 95.00, 'Eletrônicos'),
+(8, 'Triturador de Papel', 130.00, 'Obsoleto');
+
+
+
+SELECT * FROM produtos;
+
+SELECT * FROM produtos WHERE categoria = 'Eletrônicos';
+SELECT * FROM produtos WHERE nome LIKE 'T%';
+SELECT COUNT(*) FROM produtos WHERE preco > 100;
+SELECT AVG(preco) FROM produtos;
+UPDATE produtos SET preco = 75.90 WHERE id = 3;
+	SET SQL_SAFE_UPDATES = 0; -- tive que pesquisar como poderia utilizar o DELETE de forma correta e vi que tem que "desativar" a função de segurança e depois ativar ela novamente pra questões de segurança do bando de dados
+DELETE FROM produtos WHERE categoria = 'Obsoleto';
+	SET SQL_SAFE_UPDATES = 1;
